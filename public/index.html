@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8fc">
+  <title>Mini Sınav Asistanı</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Mini Sınav Asistanı ana sayfa">
+        <img class="brand-mark" src="/static/ayaz-logo.svg" alt="Ayaz Sesli Asistan logosu">
+        <span>mini<span class="brand-light">sınav</span></span>
+      </a>
+      <div class="local-badge"><span class="status-dot"></span> Sesli bilgi yarışması</div>
+    </header>
+
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">BİLGİ YARIŞMASI <span>·</span> 5 AŞAMA <span>·</span> 20 SORU</p>
+      <h1 id="page-title">Bilgini sahneye<br><span>çıkarma zamanı.</span></h1>
+      <p class="intro-copy">Aşağıdan istediğin aşamayı seç. Her aşamada dört soru var.</p>
+    </section>
+
+    <nav class="stage-rail" id="stageRail" aria-label="Sınav aşamaları"></nav>
+
+    <section class="quiz-card" aria-live="polite">
+      <div class="card-topline">
+        <div>
+          <p class="stage-kicker" id="stageKicker">AŞAMA 1 · ISINMA</p>
+          <h2 id="stageTitle">Hazırlanıyor…</h2>
+        </div>
+        <div class="score-pill"><span class="score-star">✦</span><span id="scoreValue">0</span><span class="score-label">doğru</span></div>
+      </div>
+
+      <div class="progress-track" role="progressbar" aria-label="Aşama ilerlemesi" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+      <div id="questionArea">
+        <div class="question-meta"><span id="questionNumber">SORU 1 / 4</span><span class="meta-divider"></span><span>GEÇMEK İÇİN 3 DOĞRU</span></div>
+        <div class="question-row">
+          <h3 id="questionText">Soru yükleniyor…</h3>
+          <button class="listen-button" id="listenButton" type="button" aria-label="Soruyu sesli dinle" title="Soruyu sesli dinle">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Zm4.5 3.5a5 5 0 0 1 0 7m2.5-9.5a9 9 0 0 1 0 12"/></svg>
+          </button>
+        </div>
+        <form id="questionForm" class="answer-form">
+          <label class="sr-only" for="answerInput">Cevabın</label>
+          <input id="answerInput" name="answer" type="text" autocomplete="off" placeholder="Cevabını buraya yaz…" required>
+          <button class="submit-button" type="submit">Cevabı gönder <span aria-hidden="true">↗</span></button>
+        </form>
+        <p class="feedback" id="feedback" role="status"></p>
+      </div>
+
+      <div class="stage-result" id="stageResult" hidden>
+        <div class="result-icon" id="resultIcon" aria-hidden="true">✦</div>
+        <p class="stage-kicker">AŞAMA SONUCU</p>
+        <h3 id="resultTitle"></h3>
+        <p class="result-copy" id="resultText"></p>
+        <button class="submit-button result-button" id="advanceButton" type="button"></button>
+      </div>
+    </section>
+
+    <footer class="footer-note"><span class="footer-sparkle">✳</span> Powered by Ayaz Eker <span aria-hidden="true">·</span> Sorular sesli okunur.</footer>
+  </main>
+</body>
+</html>
